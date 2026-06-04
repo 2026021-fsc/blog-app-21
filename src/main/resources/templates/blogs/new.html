@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>new-page</title>
+</head>
+<body>
+    <h1>投稿作成</h1>
+    <form action="/blogs" method="post">
+        <input type="text" id="title" name="title" placeholder="ブログ名"><br>
+        <textarea class="in" id="text" name="text" placeholder="本文"></textarea><br>
+        <button type="submit">投稿</button>
+        <a href="/blogs">キャンセル</a>
+    </form>
+</body>
+</html>

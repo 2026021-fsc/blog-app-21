@@ -1,9 +1,9 @@
 package com.example.blog_app;
 
-public class Blog {
+public class BlogForm {
     private final String title;
     private final String text;
-    public Blog(String title, String text){
+    public BlogForm(String title, String text){
         this.title = title;
         this.text = text;
     }

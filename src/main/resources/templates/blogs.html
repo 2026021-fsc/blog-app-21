@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="/css/homeStyle.css">
     <title>AllBlogs</title>
 </head>
 <body>
-    <h1>spring</h1>
+    
+    <!--メニューボタン-->
+    <div class="menu-wrapper">
+        <input type="checkbox" id="menu-toggle" hidden>
+        
+        <label class="menu-icon" for="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        
+        <div class="overlay"></div>
+        
+        <nav class="menu">
+            <ul>
+            <li><a href="blogs">Home</a></li>
+            <li><a href="blogs/new">New Post</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <h1>Home</h1>
+    <hr>
+    <label class="blog">
+        <div th:if="${#lists.isEmpty(blogs)}">
+            <p>Not Post</p>
+        </div>
+        <div th:if="${not #lists.isEmpty(blogs)}">
+            <div th:each="blog : ${blogs}">
+                <h3 th:text="${blog.title}">title</h3><br>
+                <span th:text="${blog.text}">text</span>
+                <hr>
+            </div>
+        </div>
+    </label>
 </body>
 </html>

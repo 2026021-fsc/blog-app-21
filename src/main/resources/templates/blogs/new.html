@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="/css/newStyle.css">
     <title>new-page</title>
 </head>
 <body>
-    <h1>投稿作成</h1>
+    <!--メニューボタン-->
+    <div class="menu-wrapper">
+        <input type="checkbox" id="menu-toggle" hidden>
+        
+        <label class="menu-icon" for="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        
+        <div class="overlay"></div>
+        
+        <nav class="menu">
+            <ul>
+            <li><a href="/blogs">Home</a></li>
+            <li><a href="new">New Post</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>    
+
+    <h1>New Post</h1>
     <form action="/blogs" method="post">
-        <input type="text" id="title" name="title" placeholder="ブログ名"><br>
-        <textarea class="in" id="text" name="text" placeholder="本文"></textarea><br>
-        <button type="submit">投稿</button>
-        <a href="/blogs">キャンセル</a>
+        <textarea class="titleIn" maxlength="50" id="title" name="title" placeholder="title"></textarea><br>
+        <textarea class="textIn" id="text" name="text" placeholder="text"></textarea><br>
+        <button type="submit">Post</button>
+        <a href="/blogs">Cancel</a>
     </form>
 </body>
 </html>

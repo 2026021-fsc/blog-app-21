@@ -1,0 +1,89 @@
+.menu-wrapper {
+  position: relative;
+}
+
+/* アイコンの位置を右上にする場合は、left: 20px; を right: 20px; に変更してください */
+.menu-icon {
+  width: 40px;
+  height: 30px;
+  position: fixed;
+  top: 20px;
+  right: 20px; /* 左上に固定（右上にしたい場合は right: 20px; に変更） */
+  cursor: pointer;
+  z-index: 3;
+  display: inline-block;
+}
+
+.menu-icon span {
+  display: block;
+  height: 4px;
+  margin: 6px 0;
+  background: #7e7e7e;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* ハンバーガーがXに変形 */
+#menu-toggle:checked + .menu-icon span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+#menu-toggle:checked + .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle:checked + .menu-icon span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* オーバーレイ背景 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+#menu-toggle:checked ~ .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* メニュー本体（★右から出すように変更） */
+.menu {
+  position: fixed;
+  top: 0;
+  right: -250px; /* ← left から right に変更し、右側に隠す */
+  width: 250px;
+  height: 100%;
+  background: #000000;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2); /* ← 影の方向を左側に変更 (2px から -2px) */
+  transition: right 0.4s ease; /* ← transition の対象を right に変更 */
+  z-index: 2;
+}
+
+/* ★開いたときの動き */
+#menu-toggle:checked ~ .menu {
+  right: 0; /* ← 開いたときは右端（0）へ */
+}
+
+.menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.menu li {
+  margin: 20px 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #c1c1c1;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #83bfff;
+}

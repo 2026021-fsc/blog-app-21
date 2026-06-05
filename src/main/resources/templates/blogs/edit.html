@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detailBlog</title>
+</head>
+<body>
+  <h1>Edit Blog</h1>
+  <form th:action="@{/blogs/{id}(id=${blogId})}" method="post" th:object="${blogForm}">
+    <label for="title">title:</label>
+    <textarea type="text" th:field="*{title}"></textarea><br>
+    <label for="text">text:</label>
+    <textarea type="text" th:field="*{text}"></textarea><br>
+    <button type="submit">Update</button>
+    <a href="th:href=">Cancel</a>
+  </form>
+</body>
+</html>

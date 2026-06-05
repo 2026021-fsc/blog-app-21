@@ -37,7 +37,7 @@
         </div>
         <div th:if="${not #lists.isEmpty(blogs)}">
             <div th:each="blog : ${blogs}">
-                <h3 th:text="${blog.title}">title</h3><br>
+                <h3 th:text="${blog.title}">title</h3>
                 <span th:text="${blog.text}">text</span>
                 <hr>
             </div>

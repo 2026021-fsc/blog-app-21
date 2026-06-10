@@ -8,14 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-
-
-
-
-
-
 
 
 @Controller
@@ -67,7 +59,7 @@ public class BlogController {
         Blog blog = blogOpt.get();
         BlogForm form = new BlogForm(null, null);
         form.setTitle(blog.getTitle());
-        form.setText(blog.returnText());
+        form.setText(blog.getText());
         model.addAttribute("blogForm", form);
         model.addAttribute("blogId", id);
         return "blogs/edit";

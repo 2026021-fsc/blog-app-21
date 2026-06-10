@@ -1,3 +1,6 @@
+.detailBlog{
+    white-space: pre-wrap;
+}
 .menu-wrapper {
   position: relative;
 }
@@ -86,12 +89,4 @@
 
 .menu a:hover {
   color: #83bfff;
-}
-
-
-.blogText{
-  width: 250px;
-  white-space: nowrap;        /* 折り返さない */
-  overflow: hidden;           /* はみ出し非表示 */
-  text-overflow: ellipsis;    /* … を付ける */
 }

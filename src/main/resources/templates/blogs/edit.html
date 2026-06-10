@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="/css/editStyle.css">
     <title>detailBlog</title>
 </head>
 <body>
+  <!--メニューボタン-->
+  <div class="menu-wrapper">
+    <input type="checkbox" id="menu-toggle" hidden>
+    
+    <label class="menu-icon" for="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    
+    <div class="overlay"></div>
+    
+    <nav class="menu">
+        <ul>
+        <li><a href="/blogs">Home</a></li>
+        <li><a href="/blogs/new">New Post</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+  </div>    
+
+
+
   <h1>Edit Blog</h1>
   <form th:action="@{/blogs/{id}(id=${blogId})}" method="post" th:object="${blogForm}">
     <label for="title">title:</label>
@@ -13,7 +38,7 @@
     <label for="text">text:</label>
     <textarea type="text" th:field="*{text}"></textarea><br>
     <button type="submit">Update</button>
-    <a href="th:href=">Cancel</a>
+    <a th:href="@{/blogs/{id}(id=${blogId})}">Cancel</a>
   </form>
 </body>
 </html>

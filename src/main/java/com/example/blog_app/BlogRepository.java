@@ -23,7 +23,7 @@ public class BlogRepository {
     public void save(Blog blog){
         jdbcClient.sql("INSERT INTO blogs(title, text) VALUES (:title, :text)")
             .param("title", blog.getTitle())
-            .param("text", blog.formattedText())
+            .param("text", blog.getText())
             .update();
     }
     // idで見つける

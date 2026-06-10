@@ -20,9 +20,4 @@ public class BlogForm {
     public void setText(String text) {
         this.text = text;
     }
-    // 改行変換
-    public String formattedText(){
-        String formattedText = text.replace("(\r\n|\r|\n)", "<br/>");
-        return formattedText;
-    }
 }

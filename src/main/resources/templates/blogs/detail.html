@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleSheet" href="/css/detailStyle.css">
     <title>detailBlog</title>
 </head>
 <body>
-  <h1 th:text="${blog.title}">title</h1>
-  <hr>
-  <span th:text="${blog.text}">text</span><br>
-  <hr>
-  <a th:href="@{/blogs/{id}/edit(id=${blog.id})}">編集</a>
+  <!--メニューボタン-->
+  <div class="menu-wrapper">
+    <input type="checkbox" id="menu-toggle" hidden>
+    
+    <label class="menu-icon" for="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    
+    <div class="overlay"></div>
+    
+    <nav class="menu">
+        <ul>
+        <li><a href="/blogs">Home</a></li>
+        <li><a href="/blogs/new">New Post</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+  </div>    
+
+  <div>
+    <h1 th:text="${blog.title}">title</h1>
+    <hr>
+    <span class="detailBlog" th:text="${blog.text}">text</span><br>
+    <hr>
+    <a th:href="@{/blogs/{id}/edit(id=${blog.id})}">編集</a>
+  </div>
+
 </body>
 </html>

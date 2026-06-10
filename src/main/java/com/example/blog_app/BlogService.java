@@ -32,6 +32,6 @@ public class BlogService {
     }
     // 更新
     public void update(Long id, BlogForm form){
-        blogRepository.update(id, form.getTitle(), form.formattedText());
+        blogRepository.update(id, form.getTitle(), form.getText());
     }
 }

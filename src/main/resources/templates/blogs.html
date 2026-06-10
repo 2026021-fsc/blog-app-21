@@ -38,7 +38,9 @@
         <div th:if="${not #lists.isEmpty(blogs)}">
             <div th:each="blog : ${blogs}">
                 <h3><a th:href="@{/blogs/{id}(id=${blog.id})}" th:text="${blog.title}">title</a></h3>
-                <span th:text="${blog.text}">text</span>
+                <div class="blogText">
+                    <span th:text="${blog.text}">text</span>
+                </div>
                 <hr>
             </div>
         </div>

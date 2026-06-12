@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header th:fragment="header">
+        <span th:if="${session.username}" th:text="${session.username} + ' さん'">admin さん</span>
+        <form th:if="${session.username}" action="/logout" method="post" style="display:inline">
+            <button type="submit">ログアウト</button>
+        </form>
+        <a th:if="${session.username == null}" href="/login">ログイン</a>
+    </header>
+</body>
+</html>

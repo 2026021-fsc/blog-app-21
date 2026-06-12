@@ -7,7 +7,6 @@
     <title>AllBlogs</title>
 </head>
 <body>
-    
     <!--メニューボタン-->
     <div class="menu-wrapper">
         <input type="checkbox" id="menu-toggle" hidden>
@@ -30,7 +29,9 @@
         </nav>
     </div>
     <h1>Home</h1>
+    <header th:replace="~{fragments/layout :: header}"></header>
     <hr>
+    <p th:if="${message}" th:text="${message}">登録しました</p>
     <label class="blog">
         <div th:if="${#lists.isEmpty(blogs)}">
             <p>Not Post</p>

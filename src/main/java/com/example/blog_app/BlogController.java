@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -20,11 +23,15 @@ public class BlogController {
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/blogs";
+        return "login";
     }
     
     @GetMapping("/blogs/new")
-    public String newBlog() {
+    public String newBlog(HttpSession session, RedirectAttributes redirectAttributes) {
+        if(session.getAttribute("username") == null){
+            redirectAttributes.addFlashAttribute("message", "ログインしてください");
+            return "redirect:/login";
+        }
         return "blogs/new";
     }
     // 一覧表示
@@ -35,8 +42,9 @@ public class BlogController {
     }
     // 本の登録
     @PostMapping("/blogs")
-    public String addBlog(@ModelAttribute BlogForm form) {
+    public String addBlog(@ModelAttribute BlogForm form, RedirectAttributes redirectAttributes) {
         blogService.add(form);
+        redirectAttributes.addFlashAttribute("message", "「" + form.getTitle() +  "」を登録しました");
         return "redirect:/blogs";
     }
     // 詳細表示
@@ -51,7 +59,11 @@ public class BlogController {
     }
     // ブログの編集
     @GetMapping("/blogs/{id}/edit")
-    public String editForm(@PathVariable Long id, Model model) {
+    public String editForm(@PathVariable Long id, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+        if (session.getAttribute("username") == null) {
+            redirectAttributes.addFlashAttribute("message", "ログインしてください");
+            return "redirect:/login";
+        }
         Optional<Blog> blogOpt = blogService.findById(id);
         if(blogOpt.isEmpty()){
             return "redirect:/blogs";
@@ -62,6 +74,7 @@ public class BlogController {
         form.setText(blog.getText());
         model.addAttribute("blogForm", form);
         model.addAttribute("blogId", id);
+        redirectAttributes.addFlashAttribute("message", "「" + form.getTitle() + "」を更新しました");
         return "blogs/edit";
     }
     // 編集の更新

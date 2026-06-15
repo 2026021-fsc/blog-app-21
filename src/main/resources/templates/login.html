@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +10,9 @@
     <p th:if="${message}" th:text="${message}">メッセージ</p>
     <form action="/login" method="post">
         <label for="username">ユーザー名:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" name="username"><br>
         <label for="password">パスワード:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" name="password"><br>
         <button type="submit">ログイン</button><br>
         <a href="blogs">ログインなしで続行</a>
     </form>

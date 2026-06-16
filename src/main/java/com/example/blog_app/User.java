@@ -4,10 +4,10 @@ public class User {
     private final Long id;
     private final String userName;
     private final String passwordHash;
-    public User(Long id, String userName, String passworsHash){
+    public User(Long id, String userName, String passwordHash){
         this.id = id;
         this.userName = userName;
-        this.passwordHash = passworsHash;
+        this.passwordHash = passwordHash;
     }
     public Long getId() {
         return id;

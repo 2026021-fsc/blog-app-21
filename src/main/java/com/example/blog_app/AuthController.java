@@ -24,9 +24,9 @@ public class AuthController {
     return "login";
   }
 
-  @GetMapping("/signUp")
+  @GetMapping("/login/signUp")
   public String signUpForm() {
-      return "signUp";
+      return "login/signUp";
   }
   
   // ログイン

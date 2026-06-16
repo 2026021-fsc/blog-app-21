@@ -6,6 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @Controller
 public class AuthController {
@@ -20,6 +24,12 @@ public class AuthController {
     return "login";
   }
 
+  @GetMapping("/signUp")
+  public String signUpForm() {
+      return "signUp";
+  }
+  
+  // ログイン
   @PostMapping("/login")
   public String login(@ModelAttribute LoginForm form, HttpSession session,
       RedirectAttributes redirectAttributes) {
@@ -31,10 +41,18 @@ public class AuthController {
     redirectAttributes.addFlashAttribute("message", "ユーザー名かパスワードが違います");
     return "redirect:/login";
   }
-
+  // ログアウト
   @PostMapping("/logout")
   public String logout(HttpSession session) {
     session.invalidate();
     return "redirect:/blogs";
   }
+  // 新規登録
+  @PostMapping("/signUp")
+  public String signUp(@ModelAttribute UserForm form, RedirectAttributes redirectAttributes) {
+      userService.addUser(form);
+      redirectAttributes.addFlashAttribute("message", "「" + form.getUserName() +  "」を登録しました");
+      return "redirect:/login";
+  }
+  
 }
